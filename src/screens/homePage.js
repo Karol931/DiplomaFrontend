@@ -11,7 +11,7 @@ const HomePage = () => {
     return (
         <View style={{ backgroundColor: 'blue' }}>
             <Text style={{ color: 'white' }}>{userToken}</Text>
-            <Button onPress={() => { logout }} title="Logout">Logout</Button>
+            <Button onPress={() => { logout() }} title="Logout">Logout</Button>
         </View>
     );
 }

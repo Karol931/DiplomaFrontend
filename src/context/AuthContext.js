@@ -1,19 +1,19 @@
-import React, { createContext, useContext, useState } from "react";
-
+import React, { createContext, useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { BASE_URL } from '../config';
 import { Alert } from "react-native";
-import { loginButton } from "../styles/buttons";
 
 
 export const AuthContext = createContext();
 
 
 export const AuthProvider = ({ children }) => {
+
     const [userToken, setUserToken] = useState(null);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const login = async (username, password) => {
+
         const params = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -21,8 +21,10 @@ export const AuthProvider = ({ children }) => {
                 username: username,
                 password: password,
             })
-        }
+        };
+
         // console.log(params)
+
         try {
             await fetch(`${BASE_URL}/api/users/login/`, params)
                 .then(response => {
@@ -30,38 +32,53 @@ export const AuthProvider = ({ children }) => {
                         // console.log(response)
                         response.json()
                             .then(data => {
-                                setUserToken(data["access"])
-                                console.log(userToken)
-                                setIsLoggedIn(true)
+                                let accessToken = data["access"];
+                                setUserToken(accessToken);
+                                console.log(userToken);
+                                AsyncStorage.setItem('userToken', accessToken);
                             })
                     }
                     else {
                         response.json()
                             .then(data => {
                                 if (data.hasOwnProperty("username") && data.hasOwnProperty("password")) {
-                                    Alert.alert("Username and password may not be blank.")
+                                    Alert.alert("Username and password may not be blank.");
                                 }
                                 else if (data.hasOwnProperty("username")) {
-                                    Alert.alert("Username may not be blank.")
+                                    Alert.alert("Username may not be blank.");
                                 }
                                 else if (data.hasOwnProperty("password")) {
-                                    Alert.alert("Password may not be blank.")
+                                    Alert.alert("Password may not be blank.");
                                 }
                                 else if (data.hasOwnProperty("detail")) {
-                                    Alert.alert(data["detail"])
+                                    Alert.alert(data["detail"]);
                                 }
                             })
                     }
-                }).catch(error => console.error(error))
+                }).catch(error => console.error(error));
         }
         catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
     const logout = () => {
-        setUserToken(null)
+        setUserToken(null);
+        AsyncStorage.removeItem('userToekn');
     }
+
+    const isLoggedIn = async () => {
+        try {
+            let userToken = await AsyncStorage.getItem('userToken');
+            setUserToken(userToken)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        isLoggedIn();
+    })
 
     return (
         <AuthContext.Provider value={{ login, logout, userToken }}>
