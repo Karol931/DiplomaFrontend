@@ -3,7 +3,7 @@ import { SafeAreaView, Text, View, TextInput, TouchableOpacity } from 'react-nat
 
 import LoginLogo from '../components/loginLogo';
 // styles
-import { loginContainer, loginArea, textCenter } from '../styles/loginLayout';
+import { loginContainer, loginArea, textCenter } from '../styles/layout';
 import { loginButton, loginButtonText } from '../styles/buttons';
 import { loginTextInput } from '../styles/textInput';
 import { AuthContext } from '../context/AuthContext';

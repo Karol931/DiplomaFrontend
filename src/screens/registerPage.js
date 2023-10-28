@@ -5,7 +5,7 @@ import { SafeAreaView, Text, View, TextInput, TouchableOpacity, Alert } from 're
 import LoginLogo from '../components/loginLogo';
 
 // styles
-import { loginContainer, loginArea, textCenter } from '../styles/loginLayout';
+import { loginContainer, loginArea, textCenter } from '../styles/layout';
 import { loginButton, loginButtonText } from '../styles/buttons';
 import { loginTextInput } from '../styles/textInput';
 import { BASE_URL } from '../config';

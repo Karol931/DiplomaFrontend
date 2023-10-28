@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
                             .then(data => {
                                 let accessToken = data["access"];
                                 setUserToken(accessToken);
-                                console.log(userToken);
+                                // console.log(userToken);
                                 AsyncStorage.setItem('userToken', accessToken);
                             })
                     }
@@ -64,7 +64,8 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setUserToken(null);
-        AsyncStorage.removeItem('userToekn');
+        AsyncStorage.removeItem('userToken');
+        // console.log(userToken);
     }
 
     const isLoggedIn = async () => {
@@ -78,6 +79,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         isLoggedIn();
+        // console.log(userToken)
     })
 
     return (
