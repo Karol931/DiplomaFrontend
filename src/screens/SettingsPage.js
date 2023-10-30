@@ -1,27 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { settingsButton, settingsButtonText } from '../styles/buttons';
-import ChangeUsernameView from '../components/ChangeUsername';
-import { settingsArea, settingsContainer } from '../styles/layout';
+// components
 import AppLogo from '../components/appLogo';
+import ChangeUsernameView from '../components/ChangeUsername';
 import ChangePasswordView from '../components/ChangePassword';
+
+// styles
+import { settingsButton, settingsButtonText } from '../styles/buttons';
+import { settingsArea, settingsContainer } from '../styles/layout';
+
 
 const SettingsPage = ({ navigation }) => {
 
     const [tab, setTab] = useState('password');
-
-    // let selectedTab = (tab) => {
-    //     switch (tab) {
-    //         case 'username':
-    //             return <ChangeUsernameView />
-    //         case 'password':
-    //             return <ChangePasswordView />
-    //         default:
-    //             return <View />
-    //     }
-    // };
 
     return (
         <SafeAreaView style={settingsContainer}>

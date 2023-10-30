@@ -1,20 +1,21 @@
-export const loginButton = {
-    height: 40,
-    width: 250,
+export const loginRegisterButton = {
+    // height: 40,
+    width: '80%',
     backgroundColor: '#0092ca',
     borderRadius: 10,
     justifyContent: 'center',
 }
 
-export const loginButtonText = {
+export const loginRegisterButtonText = {
     fontSize: 20,
     textAlign: 'center',
     color: '#eeeeee',
+    paddingVertical: 5,
 }
 
 export const settingsButton = {
-    height: 50,
-    width: 300,
+    height: '6%',
+    width: '70%',
     backgroundColor: '#0092ca',
     borderRadius: 10,
     justifyContent: 'center',
@@ -27,8 +28,8 @@ export const settingsButtonText = {
 }
 
 export const logoutButton = {
-    height: 50,
-    width: 50,
+    height: '60%',
+    width: '10%',
     backgroundColor: '#eeeeee',
     borderRadius: 10,
     justifyContent: 'center',
@@ -43,8 +44,8 @@ export const logoutButtonText = {
 }
 
 export const confirmButton = {
-    height: 40,
-    width: 250,
+    height: '18%',
+    width: '80%',
     backgroundColor: '#0092ca',
     borderRadius: 10,
     justifyContent: 'center',

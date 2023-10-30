@@ -2,9 +2,11 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-
-import { appLogo, appLogoText } from '../styles/logo';
+// components
 import LogoutButton from './logoutButton';
+
+// styles
+import { appLogo, appLogoText } from '../styles/logo';
 
 
 const AppLogo = () => {

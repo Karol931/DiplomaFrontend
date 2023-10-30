@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 
-
-import LoginLogo from '../components/loginLogo';
+// components
+import LoginLogo from '../components/loginRegisterLogo';
 
 // styles
-import { loginContainer, loginArea, textCenter } from '../styles/layout';
-import { loginButton, loginButtonText } from '../styles/buttons';
-import { loginTextInput } from '../styles/textInput';
+import { loginRegisterContainer, loginRegisterArea, loginRegisterSwitch } from '../styles/layout';
+import { loginRegisterButton, loginRegisterButtonText } from '../styles/buttons';
+import { loginRegisterTextInput } from '../styles/textInput';
 import { BASE_URL } from '../config';
 
 
@@ -57,19 +57,19 @@ const RegisterPage = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={loginContainer}>
+        <SafeAreaView style={loginRegisterContainer}>
             <LoginLogo></LoginLogo>
-            <View style={loginArea}>
-                <TextInput style={loginTextInput} placeholder='Username' value={username} onChangeText={(text) => setUsername(text)}></TextInput>
-                <TextInput style={loginTextInput} placeholder='Password' secureTextEntry={true} value={password} onChangeText={(text) => setPassword(text)}></TextInput>
-                <TextInput style={loginTextInput} placeholder='Confirm password' secureTextEntry={true} value={confirmPassword} onChangeText={(text) => setConfirmPassword(text)}></TextInput>
-                <TouchableOpacity style={loginButton} onPress={handleRegistration}>
-                    <Text style={loginButtonText}>Register</Text>
+            <View style={loginRegisterArea}>
+                <TextInput style={loginRegisterTextInput} placeholder='Username' value={username} onChangeText={(text) => setUsername(text)}></TextInput>
+                <TextInput style={loginRegisterTextInput} placeholder='Password' secureTextEntry={true} value={password} onChangeText={(text) => setPassword(text)}></TextInput>
+                <TextInput style={loginRegisterTextInput} placeholder='Confirm password' secureTextEntry={true} value={confirmPassword} onChangeText={(text) => setConfirmPassword(text)}></TextInput>
+                <TouchableOpacity style={loginRegisterButton} onPress={handleRegistration}>
+                    <Text style={loginRegisterButtonText}>Register</Text>
                 </TouchableOpacity>
-                <View>
-                    <Text style={textCenter}>You have an account already?</Text>
-                    <TouchableOpacity style={loginButton} onPress={() => navigation.navigate('Login')}>
-                        <Text style={loginButtonText}>Log in now</Text>
+                <View style={loginRegisterSwitch}>
+                    <Text >You have an account already?</Text>
+                    <TouchableOpacity style={loginRegisterButton} onPress={() => navigation.navigate('Login')}>
+                        <Text style={loginRegisterButtonText}>Log in now</Text>
                     </TouchableOpacity>
                 </View>
             </View>

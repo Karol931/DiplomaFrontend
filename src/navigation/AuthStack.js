@@ -1,7 +1,7 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+// components
 import LoginPage from '../screens/loginPage';
 import RegisterPage from '../screens/registerPage';
 

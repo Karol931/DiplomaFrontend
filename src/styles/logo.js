@@ -1,4 +1,4 @@
-export const loginLogo = {
+export const loginRegisterLogo = {
     flex: 1,
     backgroundColor: '#0092ca',
     textAlign: 'center',
@@ -7,7 +7,7 @@ export const loginLogo = {
     alignItems: 'center',
 }
 
-export const loginLogoText = {
+export const loginRegisterLogoText = {
     fontSize: 80,
     color: '#eeeeee',
     textAlign: 'center',

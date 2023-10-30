@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
+
+// components
 import { AuthContext } from '../context/AuthContext';
 
+// styles
 import { logoutButton, logoutButtonText } from '../styles/buttons';
 
 const LogoutButton = () => {

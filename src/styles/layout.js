@@ -1,15 +1,20 @@
-export const loginContainer = {
+export const loginRegisterContainer = {
     flexDirection: 'column',
     flex: 1,
 }
 
-export const loginArea = {
+export const loginRegisterArea = {
     flex: 2,
     backgroundColor: '#eeeeee',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
     gap: 20,
+}
+
+export const loginRegisterSwitch = {
+    width: '100%',
+    alignItems: 'center'
 }
 
 export const textCenter = {
@@ -54,6 +59,6 @@ export const changeSettingsArea = {
     borderRadius: 5,
     borderColor: '#393e46',
     gap: 10,
-    maxHeight: 250,
-    width: 300,
+    maxHeight: '30%',
+    width: '70%',
 }

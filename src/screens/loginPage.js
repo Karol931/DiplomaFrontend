@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { SafeAreaView, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-import LoginLogo from '../components/loginLogo';
-// styles
-import { loginContainer, loginArea, textCenter } from '../styles/layout';
-import { loginButton, loginButtonText } from '../styles/buttons';
-import { loginTextInput } from '../styles/textInput';
+// components
+import LoginLogo from '../components/loginRegisterLogo';
 import { AuthContext } from '../context/AuthContext';
+
+
+// styles
+import { loginRegisterContainer, loginRegisterArea, loginRegisterSwitch } from '../styles/layout';
+import { loginRegisterButton, loginRegisterButtonText } from '../styles/buttons';
+import { loginRegisterTextInput } from '../styles/textInput';
 
 const LoginPage = ({ navigation }) => {
 
@@ -15,18 +18,18 @@ const LoginPage = ({ navigation }) => {
     const [password, setPassword] = useState("");
 
     return (
-        <SafeAreaView style={loginContainer}>
+        <SafeAreaView style={loginRegisterContainer}>
             <LoginLogo></LoginLogo>
-            <View style={loginArea}>
-                <TextInput style={loginTextInput} placeholder='Username' value={username} onChangeText={(text) => setUsername(text)}></TextInput>
-                <TextInput style={loginTextInput} placeholder='Password' secureTextEntry={true} value={password} onChangeText={(text) => setPassword(text)}></TextInput>
-                <TouchableOpacity style={loginButton} onPress={() => { login(username, password) }}>
-                    <Text style={loginButtonText}>Log in</Text>
+            <View style={loginRegisterArea}>
+                <TextInput style={loginRegisterTextInput} placeholder='Username' value={username} onChangeText={(text) => setUsername(text)}></TextInput>
+                <TextInput style={loginRegisterTextInput} placeholder='Password' secureTextEntry={true} value={password} onChangeText={(text) => setPassword(text)}></TextInput>
+                <TouchableOpacity style={loginRegisterButton} onPress={() => { login(username, password) }}>
+                    <Text style={loginRegisterButtonText}>Log in</Text>
                 </TouchableOpacity>
-                <View>
-                    <Text style={textCenter}>Don't have an account yet?</Text>
-                    <TouchableOpacity style={loginButton} onPress={() => navigation.navigate('Register')}>
-                        <Text style={loginButtonText}>Register now</Text>
+                <View style={loginRegisterSwitch}>
+                    <Text>Don't have an account yet?</Text>
+                    <TouchableOpacity style={loginRegisterButton} onPress={() => navigation.navigate('Register')}>
+                        <Text style={loginRegisterButtonText}>Register now</Text>
                     </TouchableOpacity>
                 </View>
             </View>

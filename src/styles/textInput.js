@@ -1,6 +1,6 @@
-export const loginTextInput = {
+export const loginRegisterTextInput = {
     borderColor: '#0092ca',
-    width: 250,
+    width: '80%',
     padding: 5,
     borderWidth: 2,
     borderRadius: 10,
@@ -8,7 +8,7 @@ export const loginTextInput = {
 
 export const settingsTextInput = {
     borderColor: '#0092ca',
-    width: 250,
+    width: '80%',
     padding: 5,
     borderWidth: 2,
     borderRadius: 10,

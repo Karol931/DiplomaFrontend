@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 
+// styles
 import { settingsTextInput } from '../styles/textInput';
 import { confirmButton, confirmButtonText } from '../styles/buttons';
 import { changeSettingsArea } from '../styles/layout';
