@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 // components
-import LogoutButton from './logoutButton';
+import LogoutButton from './LogoutButton';
 
 // styles
 import { appLogo, appLogoText } from '../styles/logo';

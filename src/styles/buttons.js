@@ -56,3 +56,21 @@ export const confirmButtonText = {
     textAlign: 'center',
     color: '#eeeeee',
 }
+
+export const parkingButton = {
+    height: '15%',
+    maxHeight: 50,
+    width: '80%',
+    backgroundColor: '#0092ca',
+    borderRadius: 10,
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 20,
+    alignSelf: 'center'
+}
+
+export const parkingButtonText = {
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#eeeeee',
+}

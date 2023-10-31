@@ -3,13 +3,13 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // components
-import AppLogo from '../components/appLogo';
+import AppLogo from '../components/AppLogo';
 import ChangeUsernameView from '../components/ChangeUsername';
 import ChangePasswordView from '../components/ChangePassword';
 
 // styles
 import { settingsButton, settingsButtonText } from '../styles/buttons';
-import { settingsArea, settingsContainer } from '../styles/layout';
+import { appContainer, settingsArea, barContainer } from '../styles/layout';
 
 
 const SettingsPage = ({ navigation }) => {
@@ -17,7 +17,7 @@ const SettingsPage = ({ navigation }) => {
     const [tab, setTab] = useState('password');
 
     return (
-        <SafeAreaView style={settingsContainer}>
+        <SafeAreaView style={appContainer}>
             <AppLogo />
             <View style={settingsArea}>
                 <TouchableOpacity style={settingsButton} onPress={() => setTab(null)}>
@@ -32,6 +32,7 @@ const SettingsPage = ({ navigation }) => {
                 {tab === 'username' ? <ChangeUsernameView /> : ''}
                 {tab === 'password' ? <ChangePasswordView /> : ''}
             </View>
+            <View style={barContainer} />
         </SafeAreaView >
     );
 }
