@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5 } from "@expo/vector-icons";
 
 // components
-import HomePage from '../screens/homePage';
+import HomePage from '../screens/HomePage';
 import SettingsPage from '../screens/SettingsPage';
 import PaymentPage from '../screens/PaymentPage';
 import ParkingSpot from '../screens/ParkingPage';

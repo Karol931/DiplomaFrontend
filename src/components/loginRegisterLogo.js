@@ -6,7 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { loginRegisterLogo, loginRegisterLogoText } from '../styles/logo';
 
 
-const LoginLogo = () => {
+const LoginRegisterLogo = () => {
     return (
         <View style={loginRegisterLogo}>
             <Text style={loginRegisterLogoText}>
@@ -17,4 +17,4 @@ const LoginLogo = () => {
     );
 }
 
-export default LoginLogo
+export default LoginRegisterLogo

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 
 // components
-import LoginLogo from '../components/loginRegisterLogo';
+import LoginRegisterLogo from '../components/LoginRegisterLogo';
 
 // styles
 import { loginRegisterContainer, loginRegisterArea, loginRegisterSwitch } from '../styles/layout';
@@ -58,7 +58,7 @@ const RegisterPage = ({ navigation }) => {
 
     return (
         <SafeAreaView style={loginRegisterContainer}>
-            <LoginLogo></LoginLogo>
+            <LoginRegisterLogo></LoginRegisterLogo>
             <View style={loginRegisterArea}>
                 <TextInput style={loginRegisterTextInput} placeholder='Username' value={username} onChangeText={(text) => setUsername(text)}></TextInput>
                 <TextInput style={loginRegisterTextInput} placeholder='Password' secureTextEntry={true} value={password} onChangeText={(text) => setPassword(text)}></TextInput>

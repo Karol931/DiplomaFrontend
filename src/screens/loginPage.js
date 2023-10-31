@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { SafeAreaView, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 // components
-import LoginLogo from '../components/loginRegisterLogo';
+import LoginRegisterLogo from '../components/LoginRegisterLogo';
 import { AuthContext } from '../context/AuthContext';
 
 
@@ -19,7 +19,7 @@ const LoginPage = ({ navigation }) => {
 
     return (
         <SafeAreaView style={loginRegisterContainer}>
-            <LoginLogo></LoginLogo>
+            <LoginRegisterLogo></LoginRegisterLogo>
             <View style={loginRegisterArea}>
                 <TextInput style={loginRegisterTextInput} placeholder='Username' value={username} onChangeText={(text) => setUsername(text)}></TextInput>
                 <TextInput style={loginRegisterTextInput} placeholder='Password' secureTextEntry={true} value={password} onChangeText={(text) => setPassword(text)}></TextInput>
