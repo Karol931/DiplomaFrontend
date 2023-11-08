@@ -1,9 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-
-import { BASE_URL } from '../config';
 import { Alert } from "react-native";
+
+// domain
+import { BASE_URL } from '../config';
+
 
 
 export const AuthContext = createContext();
@@ -13,13 +14,13 @@ export const AuthProvider = ({ children }) => {
 
     const [userToken, setUserToken] = useState(null);
 
-    const login = async (username, password) => {
+    const login = async (email, password) => {
 
         const params = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                username: username,
+                username: email,
                 password: password,
             })
         };
@@ -42,11 +43,11 @@ export const AuthProvider = ({ children }) => {
                     else {
                         response.json()
                             .then(data => {
-                                if (data.hasOwnProperty("username") && data.hasOwnProperty("password")) {
-                                    Alert.alert("Username and password may not be blank.");
+                                if (data.hasOwnProperty("email") && data.hasOwnProperty("password")) {
+                                    Alert.alert("Email and password may not be blank.");
                                 }
-                                else if (data.hasOwnProperty("username")) {
-                                    Alert.alert("Username may not be blank.");
+                                else if (data.hasOwnProperty("email")) {
+                                    Alert.alert("Email may not be blank.");
                                 }
                                 else if (data.hasOwnProperty("password")) {
                                     Alert.alert("Password may not be blank.");
@@ -82,6 +83,8 @@ export const AuthProvider = ({ children }) => {
         isLoggedIn();
         // console.log(userToken)
     })
+
+
 
     return (
         <AuthContext.Provider value={{ login, logout, userToken }}>

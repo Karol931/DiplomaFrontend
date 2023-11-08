@@ -9,25 +9,25 @@ import { loginRegisterContainer, loginRegisterArea, loginRegisterSwitch } from '
 import { loginRegisterButton, loginRegisterButtonText } from '../styles/buttons';
 import { loginRegisterTextInput } from '../styles/textInput';
 import { BASE_URL } from '../config';
+import isEmail from 'validator/lib/isEmail';
 
+const validator = require("validator")
 
 const RegisterPage = ({ navigation }) => {
 
-    const [username, setUsername] = useState("");
+
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const handleRegistration = async () => {
 
-        if (password != confirmPassword) {
-            Alert.alert("Passwords must match")
-        }
-        else {
+        if (isPasswordValid() && isEmailValid()) {
             const params = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    username: username,
+                    username: email,
                     password: password,
                 })
             }
@@ -43,7 +43,7 @@ const RegisterPage = ({ navigation }) => {
                             response.json()
                                 .then(data => {
                                     console.log(data)
-                                    Alert.alert(data['username'][0])
+                                    Alert.alert(data['email'][0])
                                 })
                         }
                     }).catch(error => console.error(error))
@@ -56,11 +56,31 @@ const RegisterPage = ({ navigation }) => {
 
     }
 
+    const isPasswordValid = () => {
+        if (password != confirmPassword) {
+            Alert.alert("Passwords must match");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    const isEmailValid = () => {
+        if (!validator.isEmail(email)) {
+            Alert.alert("Email is not valid");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     return (
         <SafeAreaView style={loginRegisterContainer}>
-            <LoginRegisterLogo></LoginRegisterLogo>
+            <LoginRegisterLogo />
             <View style={loginRegisterArea}>
-                <TextInput style={loginRegisterTextInput} placeholder='Username' value={username} onChangeText={(text) => setUsername(text)}></TextInput>
+                <TextInput style={loginRegisterTextInput} placeholder='Email' value={email} onChangeText={(text) => setEmail(text)}></TextInput>
                 <TextInput style={loginRegisterTextInput} placeholder='Password' secureTextEntry={true} value={password} onChangeText={(text) => setPassword(text)}></TextInput>
                 <TextInput style={loginRegisterTextInput} placeholder='Confirm password' secureTextEntry={true} value={confirmPassword} onChangeText={(text) => setConfirmPassword(text)}></TextInput>
                 <TouchableOpacity style={loginRegisterButton} onPress={handleRegistration}>

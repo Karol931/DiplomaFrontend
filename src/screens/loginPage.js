@@ -14,16 +14,16 @@ import { loginRegisterTextInput } from '../styles/textInput';
 const LoginPage = ({ navigation }) => {
 
     const { login } = useContext(AuthContext)
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     return (
         <SafeAreaView style={loginRegisterContainer}>
-            <LoginRegisterLogo></LoginRegisterLogo>
+            <LoginRegisterLogo />
             <View style={loginRegisterArea}>
-                <TextInput style={loginRegisterTextInput} placeholder='Username' value={username} onChangeText={(text) => setUsername(text)}></TextInput>
+                <TextInput style={loginRegisterTextInput} placeholder='Email' value={email} onChangeText={(text) => setEmail(text)}></TextInput>
                 <TextInput style={loginRegisterTextInput} placeholder='Password' secureTextEntry={true} value={password} onChangeText={(text) => setPassword(text)}></TextInput>
-                <TouchableOpacity style={loginRegisterButton} onPress={() => { login(username, password) }}>
+                <TouchableOpacity style={loginRegisterButton} onPress={() => { login(email, password) }}>
                     <Text style={loginRegisterButtonText}>Log in</Text>
                 </TouchableOpacity>
                 <View style={loginRegisterSwitch}>
