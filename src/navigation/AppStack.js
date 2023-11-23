@@ -10,6 +10,7 @@ import ParkingSpot from '../screens/ParkingPage';
 
 // styles
 import { tabBar } from '../styles/tabBar';
+import { AppProvider } from '../context/AppContext';
 
 
 const Tab = createBottomTabNavigator();
@@ -42,17 +43,19 @@ const AppStack = () => {
     };
 
     return (
-        <Tab.Navigator screenOptions={({ route }) => ({
-            tabBarIcon: ({ color }) => screenOptions(route, color),
-            headerShown: false,
-            tabBarStyle: tabBar,
-            tabBarInactiveTintColor: '#eeeeee'
-        })} >
-            <Tab.Screen name="Home" component={HomePage} />
-            <Tab.Screen name="Parking" component={ParkingSpot} />
-            <Tab.Screen name="Payment" component={PaymentPage} />
-            <Tab.Screen name="Settings" component={SettingsPage} />
-        </Tab.Navigator>
+        <AppProvider>
+            <Tab.Navigator screenOptions={({ route }) => ({
+                tabBarIcon: ({ color }) => screenOptions(route, color),
+                headerShown: false,
+                tabBarStyle: tabBar,
+                tabBarInactiveTintColor: '#eeeeee'
+            })} >
+                <Tab.Screen name="Home" component={HomePage} />
+                <Tab.Screen name="Parking" component={ParkingSpot} />
+                <Tab.Screen name="Payment" component={PaymentPage} />
+                <Tab.Screen name="Settings" component={SettingsPage} />
+            </Tab.Navigator>
+        </AppProvider>
     );
 }
 

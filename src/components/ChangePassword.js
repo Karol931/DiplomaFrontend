@@ -7,7 +7,7 @@ import { confirmButton, confirmButtonText } from '../styles/buttons';
 import { changeSettingsArea } from '../styles/layout';
 
 
-const ChangePasswordView = () => {
+const ChangePassword = () => {
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,4 +24,4 @@ const ChangePasswordView = () => {
     );
 };
 
-export default ChangePasswordView;
+export default ChangePassword;

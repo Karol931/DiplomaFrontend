@@ -4,8 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 // components
 import AppLogo from '../components/AppLogo';
-import ChangeUsernameView from '../components/ChangeUsername';
-import ChangePasswordView from '../components/ChangePassword';
+import ChangePassword from '../components/ChangePassword';
+import ParkingSettings from '../components/ParkingSettings';
 
 // styles
 import { settingsButton, settingsButtonText } from '../styles/buttons';
@@ -14,23 +14,20 @@ import { appContainer, settingsArea, barContainer } from '../styles/layout';
 
 const SettingsPage = ({ navigation }) => {
 
-    const [tab, setTab] = useState('password');
+    const [tab, setTab] = useState(null);
 
     return (
         <SafeAreaView style={appContainer}>
             <AppLogo />
             <View style={settingsArea}>
-                <TouchableOpacity style={settingsButton} onPress={() => setTab(null)}>
+                <TouchableOpacity style={settingsButton} onPress={() => setTab('parking')}>
                     <Text style={settingsButtonText}>Reload parking spots</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={settingsButton} onPress={() => setTab('username')}>
-                    <Text style={settingsButtonText}>Change username</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={settingsButton} onPress={() => setTab('password')}>
                     <Text style={settingsButtonText}>Change password</Text>
                 </TouchableOpacity>
-                {tab === 'username' ? <ChangeUsernameView /> : ''}
-                {tab === 'password' ? <ChangePasswordView /> : ''}
+                {tab === 'password' ? <ChangePassword /> : ''}
+                {tab === 'parking' ? <ParkingSettings /> : ''}
             </View>
             <View style={barContainer} />
         </SafeAreaView >

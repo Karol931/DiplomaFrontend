@@ -59,8 +59,10 @@ export const changeSettingsArea = {
     borderRadius: 5,
     borderColor: '#393e46',
     gap: 10,
-    maxHeight: '30%',
+    height: '50%',
+    maxHeight: 200,
     width: '70%',
+    paddingVertical: 20,
 }
 
 export const parkingArea = {
@@ -75,10 +77,11 @@ export const parkingArea = {
 
 export const parkingOptionsArea = {
     paddingTop: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    zIndex: 1,
 }
 
 export const parkingContainer = {
@@ -99,15 +102,17 @@ export const parkingSpotContainer = {
     borderColor: '#393e46',
     gap: 10,
     width: '80%',
-    maxHeight: '20%',
+    maxHeight: '40%',
+    zIndex: 1,
+    overflow: 'hidden'
 }
 
 export const parkingSpotArea = {
-    paddingTop: 20,
-    paddingHorizontal: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    minWidth: '100%',
+    height: '100%',
+    backgroundColor: 'grey',
+    padding: 20,
+    flexDirection: 'column'
 }
 
 export const barContainer = {
@@ -133,4 +138,10 @@ export const paymentArea = {
     gap: 10,
     width: '80%',
     maxHeight: 300,
+}
+
+export const shopList = {
+    justifyContent: 'flex-start',
+    paddingHorizontal: 20,
+    paddingTop: 20,
 }

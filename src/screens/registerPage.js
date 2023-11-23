@@ -36,20 +36,20 @@ const RegisterPage = ({ navigation }) => {
                 await fetch(`${BASE_URL}/api/users/register/`, params)
                     .then(response => {
                         if (response.ok) {
-                            navigation.navigate("Login")
-                            Alert.alert("Succesfuly created account")
+                            navigation.navigate("Login");
+                            Alert.alert("Succesfuly created account");
                         }
                         else {
                             response.json()
                                 .then(data => {
-                                    console.log(data)
-                                    Alert.alert(data['email'][0])
+                                    console.log(data);
+                                    Alert.alert(data['username'][0]);
                                 })
                         }
                     }).catch(error => console.error(error))
             }
             catch (error) {
-                console.log(error)
+                console.log(error);
             }
         }
 

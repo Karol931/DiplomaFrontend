@@ -27,41 +27,38 @@ export const AuthProvider = ({ children }) => {
 
         // console.log(params)
 
-        try {
-            await fetch(`${BASE_URL}/api/users/login/`, params)
-                .then(response => {
-                    if (response.ok) {
-                        // console.log(response)
-                        response.json()
-                            .then(data => {
-                                let accessToken = data["access"];
-                                setUserToken(accessToken);
-                                // console.log(userToken);
-                                AsyncStorage.setItem('userToken', accessToken);
-                            })
-                    }
-                    else {
-                        response.json()
-                            .then(data => {
-                                if (data.hasOwnProperty("email") && data.hasOwnProperty("password")) {
-                                    Alert.alert("Email and password may not be blank.");
-                                }
-                                else if (data.hasOwnProperty("email")) {
-                                    Alert.alert("Email may not be blank.");
-                                }
-                                else if (data.hasOwnProperty("password")) {
-                                    Alert.alert("Password may not be blank.");
-                                }
-                                else if (data.hasOwnProperty("detail")) {
-                                    Alert.alert(data["detail"]);
-                                }
-                            })
-                    }
-                }).catch(error => console.error(error));
-        }
-        catch (error) {
-            console.log(error);
-        }
+        await fetch(`${BASE_URL}/api/users/login/`, params)
+            .then(response => {
+                if (response.ok) {
+                    // console.log(response)
+                    response.json()
+                        .then(data => {
+                            let accessToken = data["access"];
+                            setUserToken(accessToken);
+                            // console.log(userToken);
+                            AsyncStorage.setItem('userToken', accessToken);
+                        })
+                }
+                else {
+                    response.json()
+                        .then(data => {
+                            if (data.hasOwnProperty("username") && data.hasOwnProperty("password")) {
+                                Alert.alert("Email and password may not be blank.");
+                            }
+                            else if (data.hasOwnProperty("username")) {
+                                Alert.alert("Email may not be blank.");
+                            }
+                            else if (data.hasOwnProperty("password")) {
+                                Alert.alert("Password may not be blank.");
+                            }
+                            else if (data.hasOwnProperty("detail")) {
+                                Alert.alert(data["detail"]);
+                            }
+                        })
+                }
+            }).catch(error => console.error(error));
+
+
     }
 
     const logout = () => {
