@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 import Checkbox from 'expo-checkbox';
+
 // styles
-import { settingsTextInput } from '../styles/textInput';
 import { confirmButton, confirmButtonText } from '../styles/buttons';
 import { changeSettingsArea } from '../styles/layout';
 import { parkingSelectList, dropDownSelectList } from '../styles/selectList'

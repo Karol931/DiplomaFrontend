@@ -6,11 +6,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import AppLogo from '../components/AppLogo';
 
 // styles
-import { appContainer, barContainer, paymentArea } from '../styles/layout';
-import { paymentContainer, parkingSpotArea, parkingSpotContainer } from '../styles/layout';
+import { appContainer, barContainer, paymentArea, paymentSpotArea } from '../styles/layout';
+import { paymentContainer, parkingSpotArea } from '../styles/layout';
 import { parkingSpotText } from '../styles/text';
 import { parkingButton, parkingButtonText } from '../styles/buttons';
 import { paymentTextInput } from '../styles/textInput';
+
 const PaymentPage = ({ navigation }) => {
 
     const [level, setLevel] = useState(1);
@@ -22,7 +23,7 @@ const PaymentPage = ({ navigation }) => {
             <AppLogo />
             <View style={paymentContainer}>
                 <View style={paymentArea}>
-                    <View style={parkingSpotArea}>
+                    <View style={paymentSpotArea}>
                         <View>
                             <Text style={parkingSpotText}>Level:</Text>
                             <Text style={parkingSpotText}>{level}</Text>

@@ -9,7 +9,6 @@ import { loginRegisterContainer, loginRegisterArea, loginRegisterSwitch } from '
 import { loginRegisterButton, loginRegisterButtonText } from '../styles/buttons';
 import { loginRegisterTextInput } from '../styles/textInput';
 import { BASE_URL } from '../config';
-import isEmail from 'validator/lib/isEmail';
 
 const validator = require("validator")
 

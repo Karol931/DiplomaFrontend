@@ -12,31 +12,47 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 
-    const [parking, setParking] = useState(null);
 
-    const getParking = async () => {
-        await fetch(`${BASE_URL}/api/parking/create`)
+    const [parkingNames, setParkingNames] = useState([]);
+    const [parkingName, setParkingName] = useState(null);
+
+    const changeParking = () => {
+        setParkingName(null);
+        AsyncStorage.removeItem('parkingName');
+    }
+
+    const chooseParking = (parkingName) => {
+        setParkingName(parkingName);
+        AsyncStorage.setItem('parkingName', parkingName);
+    }
+
+    const getNames = async () => {
+        await fetch(`${BASE_URL}/api/parking/get_names/`)
             .then(response => {
                 if (response.ok) {
-                    // console.log(response)
-                    response.json().then(data =>
-                        setParking(data["parking"]))
+                    response.json()
+                        .then(data => {
+                            console.log(data)
+                            setParkingNames(data['names']);
+                            console.log(parkingNames);
+                        })
                 }
                 else {
                     response.json()
                         .then(data => {
-                            console.log(data)
-                            Alert.alert(data)
+                            console.log(data);
+                            Alert.alert(data);
                         })
                 }
-            })
+            }).catch(error => console.error(error));
     }
+
     useEffect(() => {
-        getParking();
+        getNames();
     }, [])
 
     return (
-        <AppContext.Provider value={{ parking }}>
+        <AppContext.Provider value={{ parkingNames, parkingName, chooseParking, changeParking }}>
             {children}
         </AppContext.Provider>
     )

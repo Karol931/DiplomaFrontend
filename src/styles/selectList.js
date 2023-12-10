@@ -3,13 +3,13 @@ export const parkingSelectList = {
 }
 
 export const dropDownSelectList = {
-    zIndex: 5,
+    zIndex: 100,
     elevation: 5,
     backgroundColor: '#eeeeee',
 }
 
 export const dropDownSelectList2 = {
-    zIndex: 10,
+    zIndex: 100,
     elevation: 10,
     backgroundColor: '#eeeeee',
 }

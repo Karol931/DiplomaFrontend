@@ -20,14 +20,10 @@ const SettingsPage = ({ navigation }) => {
         <SafeAreaView style={appContainer}>
             <AppLogo />
             <View style={settingsArea}>
-                <TouchableOpacity style={settingsButton} onPress={() => setTab('parking')}>
-                    <Text style={settingsButtonText}>Reload parking spots</Text>
-                </TouchableOpacity>
                 <TouchableOpacity style={settingsButton} onPress={() => setTab('password')}>
                     <Text style={settingsButtonText}>Change password</Text>
                 </TouchableOpacity>
                 {tab === 'password' ? <ChangePassword /> : ''}
-                {tab === 'parking' ? <ParkingSettings /> : ''}
             </View>
             <View style={barContainer} />
         </SafeAreaView >

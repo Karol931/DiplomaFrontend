@@ -13,7 +13,7 @@ import { loginRegisterTextInput } from '../styles/textInput';
 
 const LoginPage = ({ navigation }) => {
 
-    const { login } = useContext(AuthContext)
+    const { login } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 

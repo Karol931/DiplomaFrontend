@@ -37,8 +37,24 @@ export const logoutButton = {
     right: 15
 }
 
+export const changeParkingButton = {
+    height: '60%',
+    width: '15%',
+    backgroundColor: '#eeeeee',
+    borderRadius: 10,
+    justifyContent: 'center',
+    position: 'absolute',
+    left: 15
+}
+
 export const logoutButtonText = {
-    fontSize: 15,
+    fontSize: 14,
+    textAlign: 'center',
+    color: '#0092ca',
+}
+
+export const changeParkingButtonText = {
+    fontSize: 14,
     textAlign: 'center',
     color: '#0092ca',
 }
@@ -49,6 +65,9 @@ export const confirmButton = {
     backgroundColor: '#0092ca',
     borderRadius: 10,
     justifyContent: 'center',
+    position: 'absolute',
+    bottom: 20,
+    zIndex: 0
 }
 
 export const confirmButtonText = {

@@ -1,36 +1,31 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5 } from "@expo/vector-icons";
 
 // components
+import HomePage from '../screens/HomePage';
 import SettingsPage from '../screens/SettingsPage';
 import PaymentPage from '../screens/PaymentPage';
 import ParkingSpot from '../screens/ParkingPage';
 
-// components
-import { ParkingContext, ParkingProvider } from '../context/ParkingContext';
-
 // styles
 import { tabBar } from '../styles/tabBar';
+import { AppProvider } from '../context/AppContext';
+import NewParkingPage from '../screens/NewParkingPage';
 
 
 const Tab = createBottomTabNavigator();
 
-const AppStack = () => {
-
-    const { isPaid } = useContext(ParkingContext);
+const HomeStack = () => {
 
     const screenOptions = (route, color) => {
         let iconName;
 
         switch (route.name) {
-            case 'Payment':
-                iconName = 'credit-card';
+            case 'Home':
+                iconName = 'home';
                 break;
-            case 'Settings':
-                iconName = 'cog';
-                break;
-            case 'Parking':
+            case 'Add parking':
                 iconName = 'parking';
                 break;
             default:
@@ -49,13 +44,11 @@ const AppStack = () => {
             tabBarStyle: tabBar,
             tabBarInactiveTintColor: '#eeeeee'
         })} >
-            <Tab.Screen name="Parking" component={ParkingSpot} />
-            {console.log(isPaid)}
-            {isPaid ? <Tab.Screen name="Payment" component={PaymentPage} /> : null}
-            <Tab.Screen name="Settings" component={SettingsPage} />
+            <Tab.Screen name="Home" component={HomePage} />
+            <Tab.Screen name="Add parking" component={NewParkingPage} />
         </Tab.Navigator>
     );
 }
 
-export default AppStack;
+export default HomeStack;
 

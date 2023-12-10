@@ -53,16 +53,17 @@ export const logoutArea = {
 
 export const changeSettingsArea = {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     borderWidth: 2,
     borderRadius: 5,
     borderColor: '#393e46',
     gap: 10,
     height: '50%',
-    maxHeight: 200,
+    maxHeight: 400,
     width: '70%',
     paddingVertical: 20,
+    zIndex: 0
 }
 
 export const parkingArea = {
@@ -118,6 +119,14 @@ export const parkingSpotArea = {
 export const barContainer = {
     height: 150,
     color: '#eeeeee',
+}
+
+export const paymentSpotArea = {
+    minWidth: '100%',
+    height: '100%',
+    backgroundColor: '#eeeeee',
+    padding: 20,
+    flexDirection: 'column'
 }
 
 export const paymentContainer = {

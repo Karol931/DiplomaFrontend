@@ -1,27 +1,29 @@
 import React, { useContext, useEffect } from 'react';
 import { Text, View } from 'react-native';
-import { corner, midVerticalRoad, sideVerticalRoad, freespot, freeVerticalSideSpot, horizontalRoad, spot, takenspot, takenVerticalMidTopSpot, freeVerticalMidTopSpot, freeVerticalMidBotSpot, takenVerticalMidBotSpot, verticalContainer, horizontalContainer, parkingSpotText, cornerText, free, taken } from '../styles/parking';
-import { parkingSpotArea } from '../styles/layout';
-import { AppContext } from '../context/AppContext';
 import Swiper from 'react-native-swiper'
 
+// components
+import { ParkingContext } from '../context/ParkingContext';
+
 // styles
+import { parkingSpotArea } from '../styles/layout';
+import { corner, midVerticalRoad, sideVerticalRoad, horizontalRoad, spot, verticalContainer, horizontalContainer, parkingSpotText, cornerText, free, taken } from '../styles/parking';
 //18 flex w kazdym
 
 const Parking = () => {
 
-    const { parking } = useContext(AppContext);
+    const { parking } = useContext(ParkingContext);
 
-    const spotTaken = (value) => {
-        if (!value)
-            return free;
-        return taken;
+    const spotTaken = (isTaken) => {
+        if (isTaken)
+            return taken;
+        return free;
     }
 
     const getSpot = (level, zone, number) => {
         const zones = level.zones.find(zones => zones.zone === zone);
         const spots = zones.spots.find(spots => spots.number === number);
-        return spots.taken;
+        return spots.is_taken;
     }
 
     const exitOnBottom = (level) => {
@@ -29,6 +31,7 @@ const Parking = () => {
             return true
         return false
     }
+
     return (
         <Swiper loop={false} showsButtons={true} showsPagination={false} buttonWrapperStyle={{ paddingHorizontal: 5 }}>
             {parking.map(level => {
@@ -57,7 +60,7 @@ const Parking = () => {
                             <View style={[spot, spotTaken(getSpot(level, 'B', 4))]}><Text style={parkingSpotText}>B4</Text></View>
                             <View style={[spot, spotTaken(getSpot(level, 'B', 5))]}><Text style={parkingSpotText}>B5</Text></View>
                             <View style={[spot, spotTaken(getSpot(level, 'B', 6))]}><Text style={parkingSpotText}>B6</Text></View>
-                            <View style={corner}><Text style={cornerText}>Zone B</Text></View>
+                            <View style={corner}><Text style={cornerText}>Zone  B</Text></View>
                         </View>
                         {/* 2 rząd*/}
                         <View style={verticalContainer}>
