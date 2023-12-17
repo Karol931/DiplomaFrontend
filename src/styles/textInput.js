@@ -16,11 +16,8 @@ export const settingsTextInput = {
 
 export const paymentTextInput = {
     borderColor: '#0092ca',
-    width: '80%',
-    padding: 5,
+    width: '70%',
     borderWidth: 2,
     borderRadius: 10,
-    position: 'absolute',
-    bottom: 100,
-    alignSelf: 'center',
+    textAlign: 'center'
 }

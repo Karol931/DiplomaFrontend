@@ -11,92 +11,18 @@ import Parking from '../components/Parking';
 import { appContainer, parkingOptionsArea, parkingArea, parkingContainer, barContainer, parkingSpotContainer } from '../styles/layout';
 import { parkingSelectList, dropDownSelectList, dropDownSelectList2 } from '../styles/selectList';
 import { parkingButton, parkingButtonText } from '../styles/buttons';
+import SpotOptions from '../components/SpotOptions';
 
 
 
 const ParkingSpot = ({ navigation }) => {
 
-    const [level, setLevel] = useState('');
-    const [zone, setZone] = useState('');
-    const [shop, setShop] = useState('');
-
-    const shopData = [
-        { key: 'Nike', value: 'Nike' },
-        { key: 'Adidas', value: 'Adidas' },
-        { key: 'Carefour', value: 'Carefour' },
-        { key: 'Auchan', value: 'Auchan' },
-    ]
-    const levelData = [
-        { key: '1', value: 1 },
-        { key: '2', value: 2 },
-        { key: '3', value: 3 },
-        { key: '4', value: 4 },
-    ]
-
-    const zoneData = [
-        { key: 'A', value: 'A' },
-        { key: 'B', value: 'B' },
-        { key: 'C', value: 'C' },
-        { key: 'D', value: 'D' },
-    ]
-
     return (
         <SafeAreaView style={appContainer}>
             <AppLogo />
             <View style={parkingContainer}>
-                <View style={parkingArea}>
-
-                    <View style={parkingOptionsArea}>
-                        <View>
-                            <Text>Shops:</Text>
-                            <SelectList
-                                setSelected={(val) => setShop(val)}
-                                data={shopData}
-                                save='value'
-                                placeholder='- -'
-                                searchPlaceholder=''
-                                maxHeight={150}
-                                boxStyles={parkingSelectList}
-                                dropdownStyles={dropDownSelectList2}
-                            />
-                        </View>
-                        <View>
-                            <Text>Level:</Text>
-                            <SelectList
-                                setSelected={(val) => setLevel(val)}
-                                data={levelData}
-                                save='value'
-                                placeholder='- -'
-                                searchPlaceholder=''
-                                maxHeight={150}
-                                boxStyles={parkingSelectList}
-                                dropdownStyles={dropDownSelectList}
-                            />
-                        </View>
-                        <View style={{ zIndex: 0 }}>
-                            <Text>Zone:</Text>
-                            <SelectList
-                                setSelected={(val) => setZone(val)}
-                                data={zoneData}
-                                save='value'
-                                placeholder='- -'
-                                searchPlaceholder=''
-                                maxHeight={150}
-                                boxStyles={parkingSelectList}
-                                dropdownStyles={dropDownSelectList}
-                            />
-                        </View>
-                    </View>
-                    <TouchableOpacity style={parkingButton}>
-                        <Text style={parkingButtonText}>Find parking spot</Text>
-                    </TouchableOpacity>
-                </View>
-                {/* <ScrollView horizontal={true} style={parkingSpotContainer}> */}
-
-                <View style={parkingSpotContainer} horizontal={true}>
-                    <Parking></Parking>
-                </View>
-                {/* </ScrollView> */}
+                <SpotOptions></SpotOptions>
+                <Parking></Parking>
             </View>
             <View style={barContainer} />
         </SafeAreaView >

@@ -66,6 +66,21 @@ export const changeSettingsArea = {
     zIndex: 0
 }
 
+export const changePasswordArea = {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: '#393e46',
+    gap: 10,
+    height: '50%',
+    maxHeight: 200,
+    width: '70%',
+    paddingVertical: 20,
+    zIndex: 0
+}
+
 export const parkingArea = {
     flex: 2,
     borderWidth: 2,
@@ -78,7 +93,7 @@ export const parkingArea = {
 
 export const parkingOptionsArea = {
     paddingTop: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
@@ -144,9 +159,19 @@ export const paymentArea = {
     borderWidth: 2,
     borderRadius: 5,
     borderColor: '#393e46',
-    gap: 10,
     width: '80%',
     maxHeight: 300,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 20,
+    paddingLeft: 20,
+}
+
+export const paymentInputField = {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
 }
 
 export const shopList = {

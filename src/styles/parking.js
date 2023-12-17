@@ -127,3 +127,7 @@ export const free = {
 export const taken = {
     backgroundColor: 'red'
 }
+
+export const users = {
+    backgroundColor: 'gold'
+}

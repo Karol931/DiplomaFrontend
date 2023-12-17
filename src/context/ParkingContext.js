@@ -17,43 +17,148 @@ export const ParkingProvider = ({ children }) => {
 
     const [parking, setParking] = useState([]);
     const [isPaid, setIsPaid] = useState(null);
+    const [shops, setShops] = useState([]);
+    const [levels, setLevels] = useState([]);
+    const [zones, setZones] = useState([]);
+
+
     const { parkingName } = useContext(AppContext);
+    const { checkToken, userToken, id } = useContext(AuthContext);
+
+
     const getParking = async () => {
-        console.log(parkingName)
-        await fetch(`${BASE_URL}/api/parking/get_parking/`, {
+
+        if (await checkToken() === false) {
+            return
+        }
+
+        const params = {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                "Authorization": "Bearer " + userToken
             },
             body: JSON.stringify({
-                name: parkingName
+                name: parkingName,
             }),
-        })
+        }
+        await fetch(`${BASE_URL}/api/parking/get_parking/`, params)
             .then(response => {
                 if (response.ok) {
                     response.json()
                         .then(data => {
                             setParking(data['levels']);
                             setIsPaid(data['is_paid']);
-                            return
                         })
                 }
                 else {
                     response.json()
                         .then(data => {
-                            console.log(data);
+                            // console.log(data);
                             Alert.alert(data);
                         })
                 }
             }).catch(error => console.error(error));
     }
 
-    useEffect(async () => {
-        await getParking();
+    const findSpot = async (index, shop, zone, level) => {
+
+        if (await checkToken() === false) {
+            return
+        }
+
+        let body = {
+            parkingName: parkingName,
+            userId: id,
+            level: level
+        }
+
+        if (index === 0) {
+            body['zone'] = zone
+        }
+        else {
+            body['shop'] = shop
+        }
+
+        const params = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + userToken
+            },
+            body: JSON.stringify(body),
+        }
+
+        await fetch(`${BASE_URL}/api/parking/find_spot/`, params)
+            .then(response => {
+                if (response.ok) {
+                    response.json()
+                        .then(data => {
+                            if ("err" in data) {
+                                Alert.alert(data['err']);
+                                return;
+                            }
+                            else {
+                                getParking();
+                            }
+
+                        })
+                }
+                else {
+                    response.json()
+                        .then(data => {
+                            // console.log(data);
+                        })
+                }
+            }).catch(error => console.error(error));
+    }
+
+    const getParkingOptions = async () => {
+
+        if (await checkToken() === false) {
+            return
+        }
+
+        const params = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + userToken
+            },
+            body: JSON.stringify({
+                parkingName: parkingName
+            })
+        }
+        await fetch(`${BASE_URL}/api/parking/get_parking_options/`, params)
+            .then(response => {
+                if (response.ok) {
+                    response.json()
+                        .then(data => {
+                            // console.log(data);
+                            setShops(data['shops']);
+                            setLevels(data['levels']);
+                            setZones(data['zones']);
+                        })
+                }
+                else {
+                    response.json()
+                        .then(data => {
+                            // console.log(data)
+                        })
+                }
+            }).catch(error => console.error(error));
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            let res = await getParking();
+            res = await getParkingOptions();
+        }
+        fetchData();
     }, [])
 
     return (
-        <ParkingContext.Provider value={{ parking, isPaid }}>
+        <ParkingContext.Provider value={{ parking, isPaid, findSpot, shops, zones, levels }}>
             {children}
         </ParkingContext.Provider>
     )

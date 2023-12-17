@@ -50,7 +50,6 @@ const AppStack = () => {
             tabBarInactiveTintColor: '#eeeeee'
         })} >
             <Tab.Screen name="Parking" component={ParkingSpot} />
-            {console.log(isPaid)}
             {isPaid ? <Tab.Screen name="Payment" component={PaymentPage} /> : null}
             <Tab.Screen name="Settings" component={SettingsPage} />
         </Tab.Navigator>

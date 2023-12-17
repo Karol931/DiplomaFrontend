@@ -4,7 +4,7 @@ import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 // styles
 import { settingsTextInput } from '../styles/textInput';
 import { confirmButton, confirmButtonText } from '../styles/buttons';
-import { changeSettingsArea } from '../styles/layout';
+import { changePasswordArea } from '../styles/layout';
 
 
 const ChangePassword = () => {
@@ -12,9 +12,8 @@ const ChangePassword = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-
     return (
-        <View style={changeSettingsArea}>
+        <View style={changePasswordArea}>
             <TextInput style={settingsTextInput} placeholder='New password' value={password} onChangeText={(text) => setPassword(text)}></TextInput>
             <TextInput style={settingsTextInput} placeholder='Confirm new password' value={confirmPassword} onChangeText={(text) => setConfirmPassword(text)}></TextInput>
             <TouchableOpacity style={confirmButton}>
