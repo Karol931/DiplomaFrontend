@@ -19,7 +19,8 @@ export const appLogo = {
     textAlign: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    psoition: 'absolute'
 }
 
 export const appLogoText = {

@@ -19,7 +19,8 @@ export const ParkingProvider = ({ children }) => {
     const [isPaid, setIsPaid] = useState(null);
     const [shops, setShops] = useState([]);
     const [levels, setLevels] = useState([]);
-    const [zones, setZones] = useState([]);
+    const [zones, setZones] = useState([])
+    const [loading, setLoading] = useState(true)
 
 
     const { parkingName } = useContext(AppContext);
@@ -49,7 +50,7 @@ export const ParkingProvider = ({ children }) => {
                         .then(data => {
                             setParking(data['levels']);
                             setIsPaid(data['is_paid']);
-                        })
+                        }).finally(setLoading(false))
                 }
                 else {
                     response.json()
@@ -151,14 +152,16 @@ export const ParkingProvider = ({ children }) => {
 
     useEffect(() => {
         async function fetchData() {
+            setLoading(true);
             let res = await getParking();
             res = await getParkingOptions();
         }
         fetchData();
+        setLoading(false);
     }, [])
 
     return (
-        <ParkingContext.Provider value={{ parking, isPaid, findSpot, shops, zones, levels }}>
+        <ParkingContext.Provider value={{ parking, isPaid, findSpot, shops, zones, levels, loading }}>
             {children}
         </ParkingContext.Provider>
     )

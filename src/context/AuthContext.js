@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert } from "react-native";
+import axios from "axios";
 
 // domain
 import { BASE_URL } from '../config';
@@ -132,6 +133,48 @@ export const AuthProvider = ({ children }) => {
                         })
                 }
             }).catch(error => console.error(error));
+
+        // axios.post(`${BASE_URL}/api/users/login/`, params.body, params.headers)
+        //     .then(response => {
+        //         if (response.status === 200) {
+        //             const { access, refresh } = response.data;
+        //             setUserToken(access);
+        //             AsyncStorage.setItem('userToken', access);
+        //             AsyncStorage.setItem('refreshToken', refresh);
+
+        //             // Get user ID request
+        //             params.body = {
+        //                 username: email
+        //             };
+
+        //             axios.post(`${BASE_URL}/api/users/get_id/`, params.body, params.headers)
+        //                 .then(response => {
+        //                     if (response.status === 200) {
+        //                         const { id } = response.data;
+        //                         console.log(id);
+        //                         setId(id);
+        //                         AsyncStorage.setItem('userId', String(id));
+        //                     } else {
+        //                         console.log(response.data);
+        //                     }
+        //                 })
+        //                 .catch(error => console.error(error));
+        //         } else {
+        //             data = response.data;
+        //             console.log(data);
+        //             if (data.hasOwnProperty("username") && data.hasOwnProperty("password")) {
+        //                 Alert.alert("Email and password may not be blank.");
+        //             } else if (data.hasOwnProperty("username")) {
+        //                 Alert.alert("Email may not be blank.");
+        //             } else if (data.hasOwnProperty("password")) {
+        //                 Alert.alert("Password may not be blank.");
+        //             } else if (data.hasOwnProperty("detail")) {
+        //                 Alert.alert(data["detail"]);
+        //             }
+
+        //         }
+        //     })
+        //     .catch(error => console.error(error));
     }
 
     const logout = () => {

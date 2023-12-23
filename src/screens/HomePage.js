@@ -6,7 +6,7 @@ import { SelectList } from 'react-native-dropdown-select-list';
 // styles
 import { homeArea } from '../styles/layout';
 import { AppContext } from '../context/AppContext';
-import { dropDownSelectList, dropDownSelectList2 } from '../styles/selectList';
+import { dropDownSelectList, parkingSelectList } from '../styles/selectList';
 
 
 const HomePage = ({ navigation }) => {
@@ -15,9 +15,10 @@ const HomePage = ({ navigation }) => {
     const [selected, setSelected] = useState("");
     return (
         <SafeAreaView style={homeArea}>
-            <Text>Welcome to Car Park</Text>
-            <FontAwesome5 name="car" size={100} color='#393e46' style={{ marginBottom: 20 }} />
-            <SelectList style={dropDownSelectList} setSelected={setSelected} data={parkingNames} onSelect={() => { chooseParking(selected) }} />
+            <Text style={{ top: '32%', position: 'absolute' }}>Welcome to Car Park</Text>
+            <FontAwesome5 name="car" size={100} color='#393e46' style={{ top: '20%', position: 'absolute' }} />
+            <SelectList style={dropDownSelectList} setSelected={setSelected} data={parkingNames} boxStyles={parkingSelectList} onSelect={() => { chooseParking(selected) }} placeholder='- -'
+                searchPlaceholder='' />
         </SafeAreaView>
     );
 }

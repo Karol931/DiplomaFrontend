@@ -13,7 +13,7 @@ import { AuthContext } from '../context/AuthContext';
 
 const Parking = () => {
 
-    const { parking } = useContext(ParkingContext);
+    const { parking, loading } = useContext(ParkingContext);
     const { id } = useContext(AuthContext);
 
     const spotTaken = (spot) => {
@@ -35,6 +35,9 @@ const Parking = () => {
             return true
         return false
     }
+
+    if (loading)
+        return <Text>Loading...</Text>
 
     return (
         <View style={parkingSpotContainer} horizontal={true}>
