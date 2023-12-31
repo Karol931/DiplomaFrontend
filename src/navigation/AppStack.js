@@ -5,7 +5,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 // components
 import SettingsPage from '../screens/SettingsPage';
 import PaymentPage from '../screens/PaymentPage';
-import ParkingSpot from '../screens/ParkingPage';
+import ParkingPage from '../screens/ParkingPage';
 
 // components
 import { ParkingContext, ParkingProvider } from '../context/ParkingContext';
@@ -49,9 +49,8 @@ const AppStack = () => {
             tabBarStyle: tabBar,
             tabBarInactiveTintColor: '#eeeeee'
         })} >
-            <Tab.Screen name="Parking" component={ParkingSpot} />
+            <Tab.Screen name="Parking" component={ParkingPage} />
             {isPaid ? <Tab.Screen name="Payment" component={PaymentPage} /> : null}
-            <Tab.Screen name="Settings" component={SettingsPage} />
         </Tab.Navigator>
     );
 }

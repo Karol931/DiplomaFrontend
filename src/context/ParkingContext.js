@@ -50,7 +50,7 @@ export const ParkingProvider = ({ children }) => {
                         .then(data => {
                             setParking(data['levels']);
                             setIsPaid(data['is_paid']);
-                        }).finally(setLoading(false))
+                        })
                 }
                 else {
                     response.json()
@@ -95,20 +95,14 @@ export const ParkingProvider = ({ children }) => {
                 if (response.ok) {
                     response.json()
                         .then(data => {
-                            if ("err" in data) {
-                                Alert.alert(data['err']);
-                                return;
-                            }
-                            else {
-                                getParking();
-                            }
-
+                            getParking();
                         })
                 }
                 else {
                     response.json()
                         .then(data => {
-                            // console.log(data);
+                            Alert.alert(data['err']);
+                            return;
                         })
                 }
             }).catch(error => console.error(error));
@@ -153,11 +147,11 @@ export const ParkingProvider = ({ children }) => {
     useEffect(() => {
         async function fetchData() {
             setLoading(true);
-            let res = await getParking();
-            res = await getParkingOptions();
+            await getParking();
+            await getParkingOptions();
         }
-        fetchData();
-        setLoading(false);
+        fetchData().then(() =>
+            setLoading(false));
     }, [])
 
     return (

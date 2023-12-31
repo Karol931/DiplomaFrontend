@@ -16,9 +16,9 @@ import { AuthContext } from '../context/AuthContext';
 
 const SpotOptions = () => {
 
-    const [level, setLevel] = useState('');
-    const [zone, setZone] = useState('');
-    const [shop, setShop] = useState('');
+    const [level, setLevel] = useState(null);
+    const [zone, setZone] = useState(null);
+    const [shop, setShop] = useState(null);
     const [index, setIndex] = useState(0);
     const { findSpot, shops, levels, zones } = useContext(ParkingContext);
 
@@ -36,19 +36,22 @@ const SpotOptions = () => {
 
     return (
         <View style={parkingArea}>
-            <Swiper loop={false} showsButtons={true} showsPagination={false} buttonWrapperStyle={{ paddingHorizontal: 5 }} onIndexChanged={setIndex}>
+            <Swiper loop={false} showsButtons={true} showsPagination={false} buttonWrapperStyle={{ paddingHorizontal: 5 }} onIndexChanged={(idx) => { setIndex(); setLevel(null); setShop(null); setZone(null); }}>
                 <View style={parkingOptionsArea}>
                     <View>
                         <Text>Level:</Text>
                         <SelectList
+                            selectedValue={level}
                             setSelected={(val) => setLevel(val)}
+                            // onSelect={(val) => { setLevel(val) }}
                             data={levelData}
                             save='value'
                             placeholder='- -'
                             searchPlaceholder=''
-                            maxHeight={150}
+                            maxHeight={120}
                             boxStyles={parkingSelectList}
                             dropdownStyles={dropDownSelectList}
+                            defaultOption={key = 'placeholder'}
                         />
                     </View>
                     <View style={{ zIndex: 0 }}>
@@ -59,7 +62,7 @@ const SpotOptions = () => {
                             save='value'
                             placeholder='- -'
                             searchPlaceholder=''
-                            maxHeight={150}
+                            maxHeight={120}
                             boxStyles={parkingSelectList}
                             dropdownStyles={dropDownSelectList}
                         />

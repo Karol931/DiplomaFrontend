@@ -83,19 +83,14 @@ const NewParkingPage = ({ navigation }) => {
                     // console.log(response)
                     response.json()
                         .then(data => {
-                            if ("err" in data) {
-                                Alert.alert(data['err']);
-                            }
-                            else {
-                                getNames();
-                                navigation.navigate('Home');
-                            }
+                            getNames();
+                            navigation.navigate('Home');
                         })
                 }
                 else {
                     response.json()
                         .then(data => {
-                            // console.log(data);
+                            Alert.alert(data['err']);
                         })
                 }
             }).catch(error => console.error(error));

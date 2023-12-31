@@ -5,7 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 // components
 import AppLogo from '../components/AppLogo';
 import ChangePassword from '../components/ChangePassword';
-import ParkingSettings from '../components/ParkingSettings';
 
 // styles
 import { settingsButton, settingsButtonText } from '../styles/buttons';

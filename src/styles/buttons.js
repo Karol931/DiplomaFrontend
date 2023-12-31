@@ -29,7 +29,7 @@ export const settingsButtonText = {
 
 export const logoutButton = {
     height: '60%',
-    width: '10%',
+    width: '15%',
     backgroundColor: '#eeeeee',
     borderRadius: 10,
     justifyContent: 'center',

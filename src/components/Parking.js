@@ -36,8 +36,7 @@ const Parking = () => {
         return false
     }
 
-    if (loading)
-        return <Text>Loading...</Text>
+
 
     return (
         <View style={parkingSpotContainer} horizontal={true}>
@@ -47,8 +46,9 @@ const Parking = () => {
                     return (
                         <View style={parkingSpotArea}>
                             <Text>{level['level']}</Text>
-                            {/* 1 rząd*/}
-                            <View style={verticalContainer}>
+
+
+                            <View key={level.level} style={verticalContainer}>
                                 <View style={corner}><Text style={cornerText}>Zone A</Text></View>
                                 <View style={[spot, spotTaken(getSpot(level, 'A', 6))]}><Text style={parkingSpotText}>A6</Text></View>
                                 <View style={[spot, spotTaken(getSpot(level, 'A', 5))]}><Text style={parkingSpotText}>A5</Text></View>
@@ -71,7 +71,8 @@ const Parking = () => {
                                 <View style={[spot, spotTaken(getSpot(level, 'B', 6))]}><Text style={parkingSpotText}>B6</Text></View>
                                 <View style={corner}><Text style={cornerText}>Zone  B</Text></View>
                             </View>
-                            {/* 2 rząd*/}
+
+
                             <View style={verticalContainer}>
                                 <View style={horizontalContainer}>
                                     <View style={[spot, spotTaken(getSpot(level, 'A', 7))]}><Text style={parkingSpotText}>A7</Text></View>
@@ -85,7 +86,8 @@ const Parking = () => {
                                     <View style={[spot, spotTaken(getSpot(level, 'B', 8))]}><Text style={parkingSpotText}>B8</Text></View>
                                 </View>
                             </View>
-                            {/* 3 rząd*/}
+
+
                             <View style={verticalContainer}>
                                 <View style={horizontalContainer}>
                                     <View style={[spot, spotTaken(getSpot(level, 'A', 9))]}><Text style={parkingSpotText}>A9</Text></View>
@@ -112,7 +114,8 @@ const Parking = () => {
                                     <View style={[spot, spotTaken(getSpot(level, 'B', 9))]}><Text style={parkingSpotText}>B9</Text></View>
                                     <View style={[spot, spotTaken(getSpot(level, 'B', 10))]}><Text style={parkingSpotText}>B10</Text></View>
                                 </View>
-                                {/* 4 rząd*/}
+
+
                             </View>
                             <View style={verticalContainer}>
 
@@ -142,7 +145,8 @@ const Parking = () => {
                                     <View style={[spot, spotTaken(getSpot(level, 'C', 9))]}><Text style={parkingSpotText}>C 9</Text></View>
                                 </View>
                             </View>
-                            {/* 5 rząd*/}
+
+
                             <View style={verticalContainer}>
                                 <View style={horizontalContainer}>
                                     <View style={[spot, spotTaken(getSpot(level, 'D', 8))]}><Text style={parkingSpotText}>D8</Text></View>
@@ -156,7 +160,8 @@ const Parking = () => {
                                     <View style={[spot, spotTaken(getSpot(level, 'C', 7))]}><Text style={parkingSpotText}>C7</Text></View>
                                 </View>
                             </View>
-                            {/* 6 rząd*/}
+
+
                             <View style={verticalContainer}>
                                 <View style={corner}><Text style={cornerText}>Zone D</Text></View>
                                 <View style={[spot, spotTaken(getSpot(level, 'D', 6))]}><Text style={parkingSpotText}>D6</Text></View>
@@ -183,7 +188,7 @@ const Parking = () => {
                         </View >
                     )
                 })}
-
+                {/* {console.log(parkingView())} */}
 
             </Swiper>
         </View>
