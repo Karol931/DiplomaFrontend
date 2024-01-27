@@ -8,10 +8,11 @@ import RegisterPage from '../screens/RegisterPage';
 const Stack = createNativeStackNavigator();
 
 const AuthStack = () => {
+
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Login" component={LoginPage}></Stack.Screen>
-            <Stack.Screen name="Register" component={RegisterPage}></Stack.Screen>
+            <Stack.Screen name="Login" component={LoginPage} />
+            <Stack.Screen name="Register" component={RegisterPage} />
         </Stack.Navigator>
     );
 }

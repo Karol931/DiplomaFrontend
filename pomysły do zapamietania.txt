@@ -1,1 +1,0 @@
-zrobic parking jako flexbox, przekazywanie kolorow jako props

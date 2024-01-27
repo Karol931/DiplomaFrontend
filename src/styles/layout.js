@@ -37,7 +37,7 @@ export const settingsArea = {
 }
 
 export const homeArea = {
-    flex: 1,
+    flex: 11,
     backgroundColor: '#eeeeee',
     justifyContent: 'center',
     alignItems: 'center',

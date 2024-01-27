@@ -4,12 +4,15 @@ export const parkingSelectList = {
 
 export const homeSelectList = {
     width: 200,
+
+
 }
 
 export const dropDownSelectList = {
     zIndex: 100,
     elevation: 5,
     backgroundColor: '#eeeeee',
+    height: 100
 }
 
 export const dropDownSelectList2 = {

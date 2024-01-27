@@ -4,14 +4,13 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 // components
 import HomePage from '../screens/HomePage';
-import SettingsPage from '../screens/SettingsPage';
 import PaymentPage from '../screens/PaymentPage';
 import ParkingSpot from '../screens/ParkingPage';
 
 // styles
 import { tabBar } from '../styles/tabBar';
 import { AppProvider } from '../context/AppContext';
-import NewParkingPage from '../screens/NewParkingPage';
+import AdminPage from '../screens/AdminPage';
 
 
 const Tab = createBottomTabNavigator();
@@ -45,7 +44,7 @@ const HomeStack = () => {
             tabBarInactiveTintColor: '#eeeeee'
         })} >
             <Tab.Screen name="Home" component={HomePage} />
-            <Tab.Screen name="Add parking" component={NewParkingPage} />
+            <Tab.Screen name="Add parking" component={AdminPage} />
         </Tab.Navigator>
     );
 }

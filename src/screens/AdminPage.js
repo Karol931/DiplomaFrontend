@@ -5,7 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { SelectList } from 'react-native-dropdown-select-list';
 import Checkbox from 'expo-checkbox';
 // styles
-import { homeArea } from '../styles/layout';
+import { appContainer, homeArea } from '../styles/layout';
 import { AppContext } from '../context/AppContext';
 import { dropDownSelectList, dropDownSelectList2 } from '../styles/selectList';
 import { changeSettingsArea } from '../styles/layout';
@@ -15,9 +15,10 @@ import { parkingSelectList } from '../styles/selectList';
 import { parkingOptionsArea } from '../styles/layout';
 import { BASE_URL } from '../config';
 import { AuthContext } from '../context/AuthContext';
+import AppLogo from '../components/AppLogo';
 
 
-const NewParkingPage = ({ navigation }) => {
+const AdminPage = ({ navigation }) => {
 
     const [parkingName, setParkingName] = useState("");
     const [isPaid, setIsPaid] = useState(false);
@@ -98,48 +99,49 @@ const NewParkingPage = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={homeArea}>
-            <Text>Welcome to Car Park</Text>
-            <FontAwesome5 name="car" size={100} color='#393e46' />
-            <Text style={{ marginBottom: 20 }}>Add new parking</Text>
-            <View style={changeSettingsArea}>
-                <TextInput style={settingsTextInput} placeholder='Parking name' value={parkingName} onChangeText={(text) => setParkingName(text)}></TextInput>
-                <Text>Is parking paid</Text>
-                <Checkbox onValueChange={(val) => setIsPaid(val)} value={isPaid} color={isPaid ? '#0092ca' : undefined}></Checkbox>
-                <View style={[parkingOptionsArea, { gap: 20 }]}>
-                    <View>
-                        <Text>Occupacy:</Text>
-                        <SelectList
-                            setSelected={(val) => setParkingOccupacy(val)}
-                            data={parkingOccupacyData}
-                            save='value'
-                            placeholder='- -'
-                            searchPlaceholder=''
-                            maxHeight={150}
-                            boxStyles={parkingSelectList}
-                            dropdownStyles={dropDownSelectList2}
-                        />
+        <SafeAreaView style={appContainer}>
+            <AppLogo></AppLogo>
+            <View style={homeArea}>
+                <Text style={{ marginBottom: 20, fontSize: 20 }}>Add new parking</Text>
+                <View style={changeSettingsArea}>
+                    <TextInput style={settingsTextInput} placeholder='Parking name' value={parkingName} onChangeText={(text) => setParkingName(text)}></TextInput>
+                    <Text>Is parking paid</Text>
+                    <Checkbox onValueChange={(val) => setIsPaid(val)} value={isPaid} color={isPaid ? '#0092ca' : undefined}></Checkbox>
+                    <View style={[parkingOptionsArea, { gap: 20 }]}>
+                        <View>
+                            <Text>Occupacy:</Text>
+                            <SelectList
+                                setSelected={(val) => setParkingOccupacy(val)}
+                                data={parkingOccupacyData}
+                                save='value'
+                                placeholder='- -'
+                                searchPlaceholder=''
+                                maxHeight={150}
+                                boxStyles={parkingSelectList}
+                                dropdownStyles={dropDownSelectList2}
+                            />
+                        </View>
+                        <View>
+                            <Text>Levels:</Text>
+                            <SelectList
+                                setSelected={(val) => setParkingLevels(val)}
+                                data={parkingLevelsData}
+                                save='value'
+                                placeholder='- -'
+                                searchPlaceholder=''
+                                maxHeight={150}
+                                boxStyles={parkingSelectList}
+                                dropdownStyles={dropDownSelectList}
+                            />
+                        </View>
                     </View>
-                    <View>
-                        <Text>Levels:</Text>
-                        <SelectList
-                            setSelected={(val) => setParkingLevels(val)}
-                            data={parkingLevelsData}
-                            save='value'
-                            placeholder='- -'
-                            searchPlaceholder=''
-                            maxHeight={150}
-                            boxStyles={parkingSelectList}
-                            dropdownStyles={dropDownSelectList}
-                        />
-                    </View>
+                    <TouchableOpacity style={confirmButton} onPress={createParking}>
+                        <Text style={confirmButtonText}>Confirm</Text>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={confirmButton} onPress={createParking}>
-                    <Text style={confirmButtonText}>Confirm</Text>
-                </TouchableOpacity>
             </View>
         </SafeAreaView>
     );
 }
 
-export default NewParkingPage
+export default AdminPage

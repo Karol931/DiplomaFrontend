@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }) => {
                 else {
                     refreshToken = AsyncStorage.getItem("refreshToken")
                         .then((refreshToken) => {
-                            // console.log(refreshToken)
                             params['body'] = JSON.stringify({
                                 refresh: refreshToken
                             });
@@ -45,7 +44,6 @@ export const AuthProvider = ({ children }) => {
                                     if (response.ok) {
                                         response.json()
                                             .then(data => {
-                                                // console.log(data);
                                                 setUserToken(data["access"])
                                                 AsyncStorage.setItem("userToken", data["access"]);
                                                 return;
@@ -54,7 +52,7 @@ export const AuthProvider = ({ children }) => {
                                     else {
                                         response.json()
                                             .then(data => {
-                                                // console.log(data);
+                                                console.log(data);
                                                 logout();
                                                 return false;
                                             })
@@ -134,47 +132,6 @@ export const AuthProvider = ({ children }) => {
                 }
             }).catch(error => console.error(error));
 
-        // axios.post(`${BASE_URL}/api/users/login/`, params.body, params.headers)
-        //     .then(response => {
-        //         if (response.status === 200) {
-        //             const { access, refresh } = response.data;
-        //             setUserToken(access);
-        //             AsyncStorage.setItem('userToken', access);
-        //             AsyncStorage.setItem('refreshToken', refresh);
-
-        //             // Get user ID request
-        //             params.body = {
-        //                 username: email
-        //             };
-
-        //             axios.post(`${BASE_URL}/api/users/get_id/`, params.body, params.headers)
-        //                 .then(response => {
-        //                     if (response.status === 200) {
-        //                         const { id } = response.data;
-        //                         console.log(id);
-        //                         setId(id);
-        //                         AsyncStorage.setItem('userId', String(id));
-        //                     } else {
-        //                         console.log(response.data);
-        //                     }
-        //                 })
-        //                 .catch(error => console.error(error));
-        //         } else {
-        //             data = response.data;
-        //             console.log(data);
-        //             if (data.hasOwnProperty("username") && data.hasOwnProperty("password")) {
-        //                 Alert.alert("Email and password may not be blank.");
-        //             } else if (data.hasOwnProperty("username")) {
-        //                 Alert.alert("Email may not be blank.");
-        //             } else if (data.hasOwnProperty("password")) {
-        //                 Alert.alert("Password may not be blank.");
-        //             } else if (data.hasOwnProperty("detail")) {
-        //                 Alert.alert(data["detail"]);
-        //             }
-
-        //         }
-        //     })
-        //     .catch(error => console.error(error));
     }
 
     const logout = () => {

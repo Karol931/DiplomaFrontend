@@ -7,7 +7,7 @@ import { AppProvider } from './src/context/AppContext';
 import usePushNotifications from './usePushNotifications';
 
 
-export default function App() {
+const App = () => {
 
   // const { expoPushToken } = usePushNotifications();
 
@@ -19,3 +19,5 @@ export default function App() {
     </AuthProvider>
   );
 }
+
+export default App;
